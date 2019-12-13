@@ -98,21 +98,7 @@ import statistics
 import random
 import numpy as np
 
-def bagging(resamples):
-    bag=[]
-    for j in range(1,resamples):
-        X_muestra,y_muestra=sklearn.utils.resample(X_train,y_train,replace=True)
-        #X_muestra=muestra.drop(['Diagnosis'],axis=1)
-        model = DecisionTreeClassifier(presort= True)
-        model.set_params(**model_result.best_params_)
-        model.fit(X_muestra,y_muestra)
-        bag.append(model)
-#        prob=final_model.predict_proba(X_muestra)
-#        prob_list.append(prob)
-#        prob_array=np.asarray(prob_list)
-#    np.mean(prob_array,axis=0)
-#    return np.mean(prob_array,axis=0)
-    return bag
+
 
 bag=bagging(100)
 def pred_bagging(bag,X_test,y_test,threshold=0.5):
